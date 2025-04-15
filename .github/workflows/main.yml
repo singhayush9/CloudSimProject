@@ -1,0 +1,41 @@
+name: CloudSim CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-simulate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '8'  # or 11 depending on your setup
+
+      - name: Set up Maven
+        uses: s4u/setup-maven-action@v1
+        with:
+          maven-version: '3.8.7'
+
+      - name: Build Project
+        run: mvn clean install
+
+      - name: Run CloudSim Simulation
+        run: |
+          echo "Running CloudSim simulation..."
+          mvn exec:java -Dexec.mainClass="CloudSimExample"
+
+      - name: Archive Logs (optional)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: simulation-logs
+          path: logs/  # Adjust if you have output logs
