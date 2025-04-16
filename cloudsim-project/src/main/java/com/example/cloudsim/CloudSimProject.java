@@ -97,7 +97,7 @@ public class CloudSimProject {
     }
 
     private static void printResults(List<Cloudlet> list) {
-        System.out.println("\n==== Cloudlet Execution Results ====");
+        System.out.println("\n==== Cloudlet Execution Result ====");
         for (Cloudlet cloudlet : list) {
             System.out.printf("Cloudlet %d | VM %d | Time: %.2f | Start: %.2f | Finish: %.2f\n",
                     cloudlet.getCloudletId(),
