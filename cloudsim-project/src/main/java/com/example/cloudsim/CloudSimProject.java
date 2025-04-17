@@ -6,10 +6,7 @@ import org.cloudbus.cloudsim.provisioners.BwProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.PeProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.RamProvisionerSimple;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class CloudSimProject {
 
@@ -21,8 +18,8 @@ public class CloudSimProject {
             // Step 2: Create Datacenter
             Datacenter datacenter = createDatacenter("Datacenter_1");
 
-            // Step 3: Use DatacenterBroker
-            DatacenterBroker broker = new DatacenterBroker("Broker");
+            // Step 3: Use RoundRobinBroker instead of DatacenterBroker
+            DatacenterBroker broker = new RoundRobinBroker("RoundRobinBroker");
             int brokerId = broker.getId();
 
             // Step 4: Create VMs with appropriate resources
@@ -46,14 +43,14 @@ public class CloudSimProject {
 
             // Step 6: Auto-scaling logic (adds VM if load > capacity)
             if (cloudletList.size() > vmList.size()) {
-                Vm extraVm = new Vm(99, brokerId, 1500, 1, 1024, 2000, 15000, // Reduced MIPS and increased RAM
+                Vm extraVm = new Vm(99, brokerId, 1500, 1, 1024, 2000, 15000, // Increased MIPS and RAM
                         "Xen", new CloudletSchedulerTimeShared());
                 vmList.add(extraVm);
                 broker.submitVmList(Collections.singletonList(extraVm));
                 System.out.println("Auto-scaling: Extra VM added due to high load.");
             }
 
-            // Step 7: Submit cloudlets (load balancing will assign VMs)
+            // Step 7: Submit cloudlets (Round-robin scheduling will assign VMs)
             broker.submitCloudletList(cloudletList);
 
             // Step 8: Run simulation
@@ -105,6 +102,31 @@ public class CloudSimProject {
                     cloudlet.getActualCPUTime(),
                     cloudlet.getExecStartTime(),
                     cloudlet.getFinishTime());
+        }
+    }
+
+    // Custom RoundRobinBroker class
+    static class RoundRobinBroker extends DatacenterBroker {
+
+        private int currentVmIndex = 0;
+
+        public RoundRobinBroker(String name) throws Exception {
+            super(name);
+        }
+
+        @Override
+        public void submitCloudletList(List<? extends Cloudlet> list) {
+            // Distribute the cloudlets in a round-robin fashion
+            for (Cloudlet cloudlet : list) {
+                // Assign each cloudlet to the next VM in the list
+                cloudlet.setVmId(getVmList().get(currentVmIndex).getId());
+
+                // Move to the next VM in the list, and loop back if we reach the end
+                currentVmIndex = (currentVmIndex + 1) % getVmList().size();
+            }
+
+            // Submit the cloudlets to the broker
+            super.submitCloudletList(list);
         }
     }
 }
