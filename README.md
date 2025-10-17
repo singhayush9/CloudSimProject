@@ -2,7 +2,7 @@
 
 This project implements an Intelligent Resource Management System using CloudSim, designed to optimize VM scheduling, load balancing, and auto-scaling in cloud environments. It simulates dynamic resource allocation strategies to improve performance and cost efficiency.
 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Overview
 
