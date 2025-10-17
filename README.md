@@ -1,4 +1,4 @@
-Intelligent Resource Management in Cloud Computing
+☁️ Intelligent Resource Management in Cloud Computing
 
 This project implements an Intelligent Resource Management System using CloudSim, designed to optimize VM scheduling, load balancing, and auto-scaling in cloud environments. It simulates dynamic resource allocation strategies to improve performance and cost efficiency.
 
@@ -23,19 +23,21 @@ Simulation of Cloud Scenarios: Tests various cloud configurations using CloudSim
 
 CI/CD Integration: Uses GitHub Actions for automated build and testing pipelines.
 
+
 Project Structure
-CloudSimProject-main/
+CloudSimProject/
 │
 ├── cloudsim-project/
 │   ├── src/
 │   │   ├── main/java/com/example/cloudsim/
-│   │   │   └── CloudSimProject.java     # Main simulation and scheduling logic
+│   │   │   └── CloudSimProject.java   # Main simulation logic
 │   │   └── test/java/com/example/cloudsim/AppTest.java
-│   ├── libs/cloudsim-3.0.3.jar          # CloudSim core library
-│   ├── pom.xml                          # Maven build configuration
-│   └── .vscode/                         # Development environment settings
+│   ├── libs/cloudsim-3.0.3.jar        # CloudSim core library
+│   ├── pom.xml                        # Maven build configuration
+│   └── .vscode/                       # Editor settings
 │
-└── .github/workflows/main.yml           # CI/CD pipeline configuration
+└── .github/workflows/main.yml         # CI/CD pipeline config
+
 
 
 
