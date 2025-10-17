@@ -9,7 +9,7 @@ Overview
 CloudSim is a popular Java-based simulation framework for modeling and simulating cloud computing infrastructures and services.
 This project extends CloudSim 3.0.3 with advanced resource management techniques to analyze and evaluate performance under different workloads.
 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ⚙️ Features
 
@@ -23,7 +23,7 @@ Simulation of Cloud Scenarios: Tests various cloud configurations using CloudSim
 
 CI/CD Integration: Uses GitHub Actions for automated build and testing pipelines.
 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Project Structure
 
 CloudSimProject/
@@ -53,7 +53,7 @@ CloudSimProject/
 
 
 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 How to Run
 1. Clone the Repository
@@ -70,7 +70,7 @@ mvn clean install
 java -cp target/cloudsim-project-1.0-SNAPSHOT.jar com.example.cloudsim.CloudSimProject
 
 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Expected Outcomes
 
 Improved VM utilization and task throughput
@@ -79,7 +79,7 @@ Reduced response time and processing delay
 
 Adaptive scaling behavior for varying workloads
 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Future Enhancements
 
@@ -90,7 +90,7 @@ Energy-efficient VM placement strategies
 Multi-cloud simulation support
 
 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Tech Stack
 
 Language: Java
