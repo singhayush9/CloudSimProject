@@ -25,17 +25,30 @@ CI/CD Integration: Uses GitHub Actions for automated build and testing pipelines
 
 
 Project Structure
+
 CloudSimProject/
+
 │
+
 ├── cloudsim-project/
+
 │   ├── src/
+
 │   │   ├── main/java/com/example/cloudsim/
+
+
 │   │   │   └── CloudSimProject.java   # Main simulation logic
+
 │   │   └── test/java/com/example/cloudsim/AppTest.java
+
 │   ├── libs/cloudsim-3.0.3.jar        # CloudSim core library
+
 │   ├── pom.xml                        # Maven build configuration
+
 │   └── .vscode/                       # Editor settings
+
 │
+
 └── .github/workflows/main.yml         # CI/CD pipeline config
 
 
